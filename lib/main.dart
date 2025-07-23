@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shop_me/core/di/injection.dart';
+import 'package:shop_me/core/theme/app_colors.dart';
+import 'package:shop_me/core/theme/app_text_style.dart';
 
 void main() {
   configureDependencies();
@@ -18,8 +20,10 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(title: Text('Shop Me')),
-        body: const Center(child: Text('Welcome to Shop Me!')),
+        backgroundColor: AppColors.surface.primary,
+        body: Center(
+          child: Text('Welcome to Shop Me!', style: AppTextStyles.label.large),
+        ),
       ),
     );
   }
