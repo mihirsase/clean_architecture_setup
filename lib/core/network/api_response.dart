@@ -8,4 +8,6 @@ class ApiResponse {
     required this.data,
     this.headers,
   });
+
+  bool get isSuccess => statusCode >= 200 && statusCode < 300;
 }

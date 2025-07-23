@@ -8,3 +8,7 @@ class AppFailure extends Equatable {
   @override
   List<Object> get props => [message];
 }
+
+class ServerFailure extends AppFailure {
+  const ServerFailure() : super('Server error occurred');
+}
