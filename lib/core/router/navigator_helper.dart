@@ -2,7 +2,6 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shop_me/core/router/app_router.gr.dart';
-import 'package:shop_me/features/home/presentation/pages/home_page.dart';
 
 @singleton
 class NavigatorHelper {

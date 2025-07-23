@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shop_me/core/di/injection.dart';
-import 'package:shop_me/core/router/navigator_helper.dart';
 import 'package:shop_me/core/theme/app_colors.dart';
 import 'package:shop_me/core/theme/app_text_style.dart';
 import 'package:auto_route/auto_route.dart';
