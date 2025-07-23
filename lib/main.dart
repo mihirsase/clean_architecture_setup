@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:shop_me/core/di/injection.dart';
 
 void main() {
+  configureDependencies();
   runApp(const MyApp());
 }
 
@@ -16,12 +18,8 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: Text('Shop Me'),
-        ),
-        body: const Center(
-          child: Text('Welcome to Shop Me!'),
-        ),
+        appBar: AppBar(title: Text('Shop Me')),
+        body: const Center(child: Text('Welcome to Shop Me!')),
       ),
     );
   }
