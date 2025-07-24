@@ -4,14 +4,14 @@ import 'package:shop_me/core/theme/app_text_style.dart';
 import 'package:auto_route/auto_route.dart';
 
 @RoutePage()
-class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+class ArticlesPage extends StatefulWidget {
+  const ArticlesPage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ArticlesPage> createState() => _ArticlesPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ArticlesPageState extends State<ArticlesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

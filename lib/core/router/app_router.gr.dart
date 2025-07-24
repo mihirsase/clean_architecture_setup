@@ -10,20 +10,21 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i2;
-import 'package:shop_me/features/home/presentation/pages/home_page.dart' as _i1;
+import 'package:shop_me/features/home/presentation/pages/articles_page.dart'
+    as _i1;
 
 /// generated route for
-/// [_i1.HomePage]
-class HomeRoute extends _i2.PageRouteInfo<void> {
-  const HomeRoute({List<_i2.PageRouteInfo>? children})
-    : super(HomeRoute.name, initialChildren: children);
+/// [_i1.ArticlesPage]
+class ArticlesRoute extends _i2.PageRouteInfo<void> {
+  const ArticlesRoute({List<_i2.PageRouteInfo>? children})
+    : super(ArticlesRoute.name, initialChildren: children);
 
-  static const String name = 'HomeRoute';
+  static const String name = 'ArticlesRoute';
 
   static _i2.PageInfo page = _i2.PageInfo(
     name,
     builder: (data) {
-      return const _i1.HomePage();
+      return const _i1.ArticlesPage();
     },
   );
 }

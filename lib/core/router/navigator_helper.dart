@@ -21,8 +21,8 @@ class NavigatorHelper {
     return context.router.maybePop(result);
   }
 
-  Future goToHomePage(BuildContext context) async {
-    return replace(context, const HomeRoute());
+  Future goToArticlesPage(BuildContext context) async {
+    return replace(context, const ArticlesRoute());
   }
 
 

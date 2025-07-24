@@ -16,10 +16,10 @@ import 'package:shop_me/core/di/register_module.dart' as _i816;
 import 'package:shop_me/core/network/api_client.dart' as _i732;
 import 'package:shop_me/core/network/clients/dio_client.dart' as _i1041;
 import 'package:shop_me/core/router/navigator_helper.dart' as _i669;
-import 'package:shop_me/features/home/data/data_source/remote/home_page_api.dart'
-    as _i967;
-import 'package:shop_me/features/home/data/repositories/home_page_repository.dart'
-    as _i39;
+import 'package:shop_me/features/home/data/data_source/remote/articles_api.dart'
+    as _i165;
+import 'package:shop_me/features/home/data/repositories/articles_repository.dart'
+    as _i452;
 import 'package:shop_me/features/home/domain/usecases/articles_use_case.dart'
     as _i649;
 
@@ -34,14 +34,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i669.NavigatorHelper>(() => _i669.NavigatorHelper());
     gh.lazySingleton<_i361.Dio>(() => registerModule.dio);
     gh.factory<_i732.ApiClient>(() => _i1041.DioClient(gh<_i361.Dio>()));
-    gh.factory<_i967.HomePageApi>(
-      () => _i967.HomePageApiImpl(gh<_i732.ApiClient>()),
+    gh.factory<_i165.ArticlesApi>(
+      () => _i165.ArticlesApiImpl(gh<_i732.ApiClient>()),
     );
-    gh.factory<_i39.HomePageRepository>(
-      () => _i39.HomePageRepositoryImpl(gh<_i967.HomePageApi>()),
+    gh.factory<_i452.ArticlesRepository>(
+      () => _i452.ArticlesRepositoryImpl(gh<_i165.ArticlesApi>()),
     );
     gh.factory<_i649.ArticlesUseCase>(
-      () => _i649.ArticlesUseCase(gh<_i39.HomePageRepository>()),
+      () => _i649.ArticlesUseCase(gh<_i452.ArticlesRepository>()),
     );
     return this;
   }

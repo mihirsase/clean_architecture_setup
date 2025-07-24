@@ -4,16 +4,16 @@ import 'package:shop_me/core/constants/app_constants.dart';
 import 'package:shop_me/core/network/api_client.dart';
 import 'package:shop_me/core/network/api_response.dart';
 
-abstract class HomePageApi {
+abstract class ArticlesApi {
   // Get all article
   Future<ApiResponse> getArticles();
 }
 
-@Injectable(as: HomePageApi)
-class HomePageApiImpl implements HomePageApi {
+@Injectable(as: ArticlesApi)
+class ArticlesApiImpl implements ArticlesApi {
   ApiClient apiClient;
 
-  HomePageApiImpl(this.apiClient);
+  ArticlesApiImpl(this.apiClient);
   @override
   Future<ApiResponse> getArticles() async {
     return await apiClient.get(

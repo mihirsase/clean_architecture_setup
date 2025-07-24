@@ -1,21 +1,21 @@
 import 'package:injectable/injectable.dart';
 import 'package:shop_me/core/usecase/either.dart';
 import 'package:shop_me/core/usecase/failures.dart';
-import 'package:shop_me/features/home/data/data_source/remote/home_page_api.dart';
+import 'package:shop_me/features/home/data/data_source/remote/articles_api.dart';
 import 'package:shop_me/features/home/data/models/news_article_model.dart';
 
-abstract class HomePageRepository {
+abstract class ArticlesRepository {
   Future<Either<AppFailure, List<NewsArticleModel>>> getNyTimesArticles();
 }
 
-@Injectable(as: HomePageRepository)
-class HomePageRepositoryImpl implements HomePageRepository {
-  final HomePageApi homePageApi;
-  HomePageRepositoryImpl(this.homePageApi);
+@Injectable(as: ArticlesRepository)
+class ArticlesRepositoryImpl implements ArticlesRepository {
+  final ArticlesApi articlesApi;
+  ArticlesRepositoryImpl(this.articlesApi);
   @override
   Future<Either<AppFailure, List<NewsArticleModel>>>
   getNyTimesArticles() async {
-    final response = await homePageApi.getArticles();
+    final response = await articlesApi.getArticles();
     if (response.isSuccess) {
       try {
         return Right(NewsArticleModel.fromJsonList(response.data['results']));
