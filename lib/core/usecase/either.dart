@@ -18,6 +18,8 @@ abstract class Either<L, R> extends Equatable {
     T Function(L error)? error,
     T Function(R success)? success,
   });
+
+  T fold<T>(T Function(L l) leftFn, T Function(R r) rightFn);
 }
 
 class Left<L, R> extends Either<L, R> {
@@ -51,6 +53,11 @@ class Left<L, R> extends Either<L, R> {
       return error(value);
     }
     return orElse();
+  }
+
+  @override
+  T fold<T>(T Function(L l) leftFn, T Function(R r) rightFn) {
+    return leftFn(value);
   }
 
   @override
@@ -88,6 +95,11 @@ class Right<L, R> extends Either<L, R> {
       return success(value);
     }
     return orElse();
+  }
+
+  @override
+  T fold<T>(T Function(L l) leftFn, T Function(R r) rightFn) {
+    return rightFn(value);
   }
 
   @override

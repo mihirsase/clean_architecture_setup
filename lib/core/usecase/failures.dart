@@ -12,3 +12,7 @@ class AppFailure extends Equatable {
 class ServerFailure extends AppFailure {
   const ServerFailure() : super('Server error occurred');
 }
+
+class DataParsingFailure extends AppFailure {
+  const DataParsingFailure() : super('Data parsing error occurred');
+}

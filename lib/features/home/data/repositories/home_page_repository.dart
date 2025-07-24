@@ -17,7 +17,11 @@ class HomePageRepositoryImpl implements HomePageRepository {
   getNyTimesArticles() async {
     final response = await homePageApi.getArticles();
     if (response.isSuccess) {
-      return Right(NewsArticleModel.fromJsonList(response.data['results']));
+      try {
+        return Right(NewsArticleModel.fromJsonList(response.data['results']));
+      } catch (e) {
+        return Left(DataParsingFailure());
+      }
     } else {
       return Left(ServerFailure());
     }

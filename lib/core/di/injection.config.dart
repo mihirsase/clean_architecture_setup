@@ -20,6 +20,8 @@ import 'package:shop_me/features/home/data/data_source/remote/home_page_api.dart
     as _i967;
 import 'package:shop_me/features/home/data/repositories/home_page_repository.dart'
     as _i39;
+import 'package:shop_me/features/home/domain/usecases/articles_use_case.dart'
+    as _i649;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -37,6 +39,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i39.HomePageRepository>(
       () => _i39.HomePageRepositoryImpl(gh<_i967.HomePageApi>()),
+    );
+    gh.factory<_i649.ArticlesUseCase>(
+      () => _i649.ArticlesUseCase(gh<_i39.HomePageRepository>()),
     );
     return this;
   }
