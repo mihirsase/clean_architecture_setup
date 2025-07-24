@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:shop_me/features/home/data/models/media_model.dart';
+import 'package:shop_me/features/articles/data/models/media_model.dart';
 
 part 'news_article_model.g.dart';
 

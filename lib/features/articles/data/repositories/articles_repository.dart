@@ -1,8 +1,8 @@
 import 'package:injectable/injectable.dart';
 import 'package:shop_me/core/usecase/either.dart';
 import 'package:shop_me/core/usecase/failures.dart';
-import 'package:shop_me/features/home/data/data_source/remote/articles_api.dart';
-import 'package:shop_me/features/home/data/models/news_article_model.dart';
+import 'package:shop_me/features/articles/data/data_source/remote/articles_api.dart';
+import 'package:shop_me/features/articles/data/models/news_article_model.dart';
 
 abstract class ArticlesRepository {
   Future<Either<AppFailure, List<NewsArticleModel>>> getNyTimesArticles();

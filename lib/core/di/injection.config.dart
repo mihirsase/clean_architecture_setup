@@ -16,11 +16,11 @@ import 'package:shop_me/core/di/register_module.dart' as _i816;
 import 'package:shop_me/core/network/api_client.dart' as _i732;
 import 'package:shop_me/core/network/clients/dio_client.dart' as _i1041;
 import 'package:shop_me/core/router/navigator_helper.dart' as _i669;
-import 'package:shop_me/features/home/data/data_source/remote/articles_api.dart'
+import 'package:shop_me/features/articles/data/data_source/remote/articles_api.dart'
     as _i165;
-import 'package:shop_me/features/home/data/repositories/articles_repository.dart'
+import 'package:shop_me/features/articles/data/repositories/articles_repository.dart'
     as _i452;
-import 'package:shop_me/features/home/domain/usecases/articles_use_case.dart'
+import 'package:shop_me/features/articles/domain/usecases/articles_use_case.dart'
     as _i649;
 
 extension GetItInjectableX on _i174.GetIt {

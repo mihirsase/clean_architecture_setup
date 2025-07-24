@@ -1,4 +1,4 @@
-import 'package:shop_me/features/home/data/models/media_model.dart';
+import 'package:shop_me/features/articles/data/models/media_model.dart';
 
 class MediaEntity {
   final String caption;

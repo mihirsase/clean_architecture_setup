@@ -1,4 +1,4 @@
-import 'package:shop_me/features/home/data/models/media_meta_data_model.dart';
+import 'package:shop_me/features/articles/data/models/media_meta_data_model.dart';
 
 import 'package:json_annotation/json_annotation.dart';
 

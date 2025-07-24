@@ -1,5 +1,5 @@
 import 'package:shop_me/core/usecase/failures.dart';
-import 'package:shop_me/features/home/domain/entities/news_article_entity.dart';
+import 'package:shop_me/features/articles/domain/entities/news_article_entity.dart';
 
 abstract class ArticlesState {}
 

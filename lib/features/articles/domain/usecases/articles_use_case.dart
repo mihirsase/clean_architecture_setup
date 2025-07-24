@@ -2,8 +2,8 @@ import 'package:injectable/injectable.dart';
 import 'package:shop_me/core/usecase/either.dart';
 import 'package:shop_me/core/usecase/failures.dart';
 import 'package:shop_me/core/usecase/usecase.dart';
-import 'package:shop_me/features/home/data/repositories/articles_repository.dart';
-import 'package:shop_me/features/home/domain/entities/news_article_entity.dart';
+import 'package:shop_me/features/articles/data/repositories/articles_repository.dart';
+import 'package:shop_me/features/articles/domain/entities/news_article_entity.dart';
 
 @Injectable()
 class ArticlesUseCase extends UseCaseNoArg<List<NewsArticleEntity>> {

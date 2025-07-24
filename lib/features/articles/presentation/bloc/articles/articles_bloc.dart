@@ -1,6 +1,6 @@
-import 'package:shop_me/features/home/domain/usecases/articles_use_case.dart';
-import 'package:shop_me/features/home/presentation/bloc/articles/articles_event.dart';
-import 'package:shop_me/features/home/presentation/bloc/articles/articles_state.dart';
+import 'package:shop_me/features/articles/domain/usecases/articles_use_case.dart';
+import 'package:shop_me/features/articles/presentation/bloc/articles/articles_event.dart';
+import 'package:shop_me/features/articles/presentation/bloc/articles/articles_state.dart';
 import 'package:bloc/bloc.dart';
 
 class ArticlesBloc extends Bloc<ArticlesEvent, ArticlesState> {

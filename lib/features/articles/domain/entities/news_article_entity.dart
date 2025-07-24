@@ -1,5 +1,5 @@
-import 'package:shop_me/features/home/data/models/news_article_model.dart';
-import 'package:shop_me/features/home/domain/entities/media_entity.dart';
+import 'package:shop_me/features/articles/data/models/news_article_model.dart';
+import 'package:shop_me/features/articles/domain/entities/media_entity.dart';
 
 class NewsArticleEntity {
   final int id;
