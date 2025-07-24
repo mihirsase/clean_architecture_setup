@@ -31,8 +31,10 @@ extension GetItInjectableX on _i174.GetIt {
     final registerModule = _$RegisterModule();
     gh.singleton<_i669.NavigatorHelper>(() => _i669.NavigatorHelper());
     gh.lazySingleton<_i361.Dio>(() => registerModule.dio);
-    gh.lazySingleton<_i732.ApiClient>(() => _i1041.DioClient(gh<_i361.Dio>()));
-    gh.factory<_i967.HomePageApi>(() => _i967.HomePageApiImpl());
+    gh.factory<_i732.ApiClient>(() => _i1041.DioClient(gh<_i361.Dio>()));
+    gh.factory<_i967.HomePageApi>(
+      () => _i967.HomePageApiImpl(gh<_i732.ApiClient>()),
+    );
     gh.factory<_i39.HomePageRepository>(
       () => _i39.HomePageRepositoryImpl(gh<_i967.HomePageApi>()),
     );

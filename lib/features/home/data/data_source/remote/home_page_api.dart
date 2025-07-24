@@ -1,7 +1,6 @@
 import 'package:injectable/injectable.dart';
 import 'package:shop_me/core/constants/api_constants.dart';
 import 'package:shop_me/core/constants/app_constants.dart';
-import 'package:shop_me/core/di/injection.dart';
 import 'package:shop_me/core/network/api_client.dart';
 import 'package:shop_me/core/network/api_response.dart';
 
@@ -12,9 +11,12 @@ abstract class HomePageApi {
 
 @Injectable(as: HomePageApi)
 class HomePageApiImpl implements HomePageApi {
+  ApiClient apiClient;
+
+  HomePageApiImpl(this.apiClient);
   @override
   Future<ApiResponse> getArticles() async {
-    return await getIt<ApiClient>().get(
+    return await apiClient.get(
       ApiConstants.mostPopularArticles,
       queryParameters: {'api-key': AppConstants.apiKey},
     );

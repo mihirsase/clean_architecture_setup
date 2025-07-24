@@ -4,7 +4,7 @@ import 'package:shop_me/core/constants/api_constants.dart';
 import 'package:shop_me/core/network/api_client.dart';
 import 'package:shop_me/core/network/api_response.dart';
 
-@LazySingleton(as: ApiClient)
+@Injectable(as: ApiClient)
 class DioClient implements ApiClient {
   final Dio _dio;
 
