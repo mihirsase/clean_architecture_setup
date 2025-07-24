@@ -15,14 +15,16 @@ class ArticlesRepositoryImpl implements ArticlesRepository {
   @override
   Future<Either<AppFailure, List<NewsArticleModel>>>
   getNyTimesArticles() async {
-    final response = await articlesApi.getArticles();
-    if (response.isSuccess) {
-      try {
+    try {
+      final response = await articlesApi.getArticles();
+      if (response.isSuccess) {
         return Right(NewsArticleModel.fromJsonList(response.data['results']));
-      } catch (e) {
-        return Left(DataParsingFailure());
+      } else {
+        return Left(ServerFailure());
       }
-    } else {
+    } on TypeError catch (_) {
+      return Left(DataParsingFailure());
+    } catch (e) {
       return Left(ServerFailure());
     }
   }
