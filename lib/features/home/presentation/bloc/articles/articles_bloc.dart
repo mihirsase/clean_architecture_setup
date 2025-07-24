@@ -13,7 +13,6 @@ class ArticlesBloc extends Bloc<ArticlesEvent, ArticlesState> {
     LoadArticles event,
     Emitter<ArticlesState> emit,
   ) async {
-    emit(ArticlesLoading());
     final either = await articlesUseCase.call();
     either.when(
       error: (failure) {
