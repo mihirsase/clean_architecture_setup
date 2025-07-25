@@ -4,7 +4,6 @@ import 'package:shop_me/core/di/injection.dart';
 import 'package:shop_me/core/theme/app_colors.dart';
 import 'package:shop_me/core/theme/app_text_style.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:shop_me/features/articles/domain/usecases/articles_use_case.dart';
 import 'package:shop_me/features/articles/presentation/bloc/articles/articles_bloc.dart';
 import 'package:shop_me/features/articles/presentation/bloc/articles/articles_event.dart';
 import 'package:shop_me/features/articles/presentation/bloc/articles/articles_state.dart';
@@ -21,9 +20,7 @@ class _ArticlesPageState extends State<ArticlesPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create:
-          (context) =>
-              ArticlesBloc(getIt<ArticlesUseCase>())..add(LoadArticles()),
+      create: (context) => ArticlesBloc(getIt())..add(LoadArticles()),
       child: Scaffold(
         backgroundColor: AppColors.surface.primary,
         body: BlocBuilder<ArticlesBloc, ArticlesState>(
