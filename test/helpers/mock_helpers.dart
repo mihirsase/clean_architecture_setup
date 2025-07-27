@@ -13,4 +13,7 @@ class MockArticlesRepository extends Mock implements ArticlesRepository {}
 
 class MockArticlesUseCase extends Mock implements ArticlesUseCase {}
 
-class MockArticlesBloc extends Mock implements ArticlesBloc {}
+class MockArticlesBloc extends Mock implements ArticlesBloc {
+  @override
+  Future<void> close() => Future.value();
+}

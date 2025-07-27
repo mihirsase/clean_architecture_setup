@@ -39,11 +39,10 @@ void main() {
     getItTest.reset();
   });
 
-  testWidgets('shows loading indicator when state is ArticlesLoading', (
-    tester,
-  ) async {
+  testWidgets('shows loading indicator when state is ArticlesLoading', (tester) async {
     // Arrange
     when(() => mockBloc.state).thenReturn(ArticlesLoading());
+    when(() => mockBloc.stream).thenAnswer((_) => Stream.value(ArticlesLoading()));
 
     // Act
     await tester.pumpWidget(MaterialApp(home: ArticlesPage()));
@@ -52,11 +51,11 @@ void main() {
     expect(find.byType(CircularProgressIndicator), findsOneWidget);
   });
 
-  testWidgets('shows list of articles when state is ArticlesLoaded', (
-    tester,
-  ) async {
+  testWidgets('shows list of articles when state is ArticlesLoaded', (tester) async {
     final articles = getFakeArticleEntities();
-    when(() => mockUseCase()).thenAnswer((_) async => Right(articles));
+    when(() => mockBloc.state).thenReturn(ArticlesLoaded(articles));
+    when(() => mockBloc.stream).thenAnswer((_) => Stream.value(ArticlesLoaded(articles)));
+
     await tester.pumpWidget(MaterialApp(home: ArticlesPage()));
     await tester.pump();
 
@@ -66,11 +65,10 @@ void main() {
     expect(find.text(articles.first.abstract), findsOneWidget);
   });
 
-  testWidgets('shows error message when state is ArticlesError', (
-    tester,
-  ) async {
+  testWidgets('shows error message when state is ArticlesError', (tester) async {
     final failure = ServerFailure();
-    when(() => mockUseCase()).thenAnswer((_) async => Left(failure));
+    when(() => mockBloc.state).thenReturn(ArticlesError(failure));
+    when(() => mockBloc.stream).thenAnswer((_) => Stream.value(ArticlesError(failure)));
 
     await tester.pumpWidget(MaterialApp(home: ArticlesPage()));
     await tester.pump();
