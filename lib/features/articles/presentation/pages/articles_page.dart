@@ -20,7 +20,7 @@ class _ArticlesPageState extends State<ArticlesPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => ArticlesBloc(getIt())..add(LoadArticles()),
+      create: (context) => getIt<ArticlesBloc>()..add(LoadArticles()),
       child: Scaffold(
         backgroundColor: AppColors.surface.primary,
         body: BlocBuilder<ArticlesBloc, ArticlesState>(

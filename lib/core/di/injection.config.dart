@@ -17,11 +17,13 @@ import 'package:shop_me/core/network/api_client.dart' as _i732;
 import 'package:shop_me/core/network/clients/dio_client.dart' as _i1041;
 import 'package:shop_me/core/router/navigator_helper.dart' as _i669;
 import 'package:shop_me/features/articles/data/data_source/remote/articles_api.dart'
-    as _i165;
+    as _i549;
 import 'package:shop_me/features/articles/data/repositories/articles_repository.dart'
-    as _i452;
+    as _i917;
 import 'package:shop_me/features/articles/domain/usecases/articles_use_case.dart'
-    as _i649;
+    as _i167;
+import 'package:shop_me/features/articles/presentation/bloc/articles/articles_bloc.dart'
+    as _i543;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -34,14 +36,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i669.NavigatorHelper>(() => _i669.NavigatorHelper());
     gh.lazySingleton<_i361.Dio>(() => registerModule.dio);
     gh.factory<_i732.ApiClient>(() => _i1041.DioClient(gh<_i361.Dio>()));
-    gh.factory<_i165.ArticlesApi>(
-      () => _i165.ArticlesApiImpl(gh<_i732.ApiClient>()),
+    gh.factory<_i549.ArticlesApi>(
+      () => _i549.ArticlesApiImpl(gh<_i732.ApiClient>()),
     );
-    gh.factory<_i452.ArticlesRepository>(
-      () => _i452.ArticlesRepositoryImpl(gh<_i165.ArticlesApi>()),
+    gh.factory<_i917.ArticlesRepository>(
+      () => _i917.ArticlesRepositoryImpl(gh<_i549.ArticlesApi>()),
     );
-    gh.factory<_i649.ArticlesUseCase>(
-      () => _i649.ArticlesUseCase(gh<_i452.ArticlesRepository>()),
+    gh.factory<_i167.ArticlesUseCase>(
+      () => _i167.ArticlesUseCase(gh<_i917.ArticlesRepository>()),
+    );
+    gh.factory<_i543.ArticlesBloc>(
+      () => _i543.ArticlesBloc(gh<_i167.ArticlesUseCase>()),
     );
     return this;
   }
