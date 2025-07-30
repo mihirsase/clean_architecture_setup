@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:shop_me/features/cart/presentation/bloc/cart_event.dart';
 import 'package:shop_me/features/cart/presentation/bloc/cart_state.dart';
+import 'package:shop_me/features/product_details/domain/entities/product_details_entity.dart';
 
 @Injectable()
 class CartBloc extends Bloc<CartEvent, CartState> {
@@ -15,14 +16,17 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
   FutureOr<void> _addToCart(AddToCart event, Emitter<CartState> emit) {
     if (state is CartStateLoaded) {
-      final cartItems = (state as CartStateLoaded).cartItems;
-      if (cartItems.containsKey(event.product)) {
-        cartItems[event.product] = cartItems[event.product]! + 1;
-        emit(CartStateLoaded(cartItems));
+      final currentCart = Map<ProductDetailsEntity, int>.from(
+        (state as CartStateLoaded).cartItems,
+      );
+
+      if (currentCart.containsKey(event.product)) {
+        currentCart[event.product] = currentCart[event.product]! + 1;
       } else {
-        cartItems[event.product] = 1;
-        emit(CartStateLoaded(cartItems));
+        currentCart[event.product] = 1;
       }
+
+      emit(CartStateLoaded(currentCart));
     }
   }
 
@@ -31,14 +35,16 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     Emitter<CartState> emit,
   ) {
     if (state is CartStateLoaded) {
-      final cartItems = (state as CartStateLoaded).cartItems;
-      if (cartItems.containsKey(event.product)) {
-        cartItems[event.product] = cartItems[event.product]! - 1;
+      final currentCart = Map<ProductDetailsEntity, int>.from(
+        (state as CartStateLoaded).cartItems,
+      );
+      if (currentCart.containsKey(event.product)) {
+        currentCart[event.product] = currentCart[event.product]! - 1;
 
-        if (cartItems[event.product]! == 0) {
-          cartItems.remove(event.product);
+        if (currentCart[event.product]! == 0) {
+          currentCart.remove(event.product);
         }
-        emit(CartStateLoaded(cartItems));
+        emit(CartStateLoaded(currentCart));
       }
     }
   }
