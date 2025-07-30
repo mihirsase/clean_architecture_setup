@@ -8,8 +8,8 @@ import 'package:shop_me/features/articles/presentation/bloc/articles/articles_bl
 import 'package:shop_me/features/articles/presentation/bloc/articles/articles_state.dart';
 import 'package:shop_me/features/articles/presentation/pages/articles_page.dart';
 
-import '../../../helpers/di/injection.dart';
-import '../../../helpers/mock_helpers.dart';
+import '../../../../helpers/di/injection.dart';
+import '../../../../helpers/mock_helpers.dart';
 import '../../data/fakes/fake_articles_response.dart';
 
 void configureDependenciesForTest(

@@ -24,6 +24,14 @@ import 'package:shop_me/features/articles/domain/usecases/articles_use_case.dart
     as _i167;
 import 'package:shop_me/features/articles/presentation/bloc/articles/articles_bloc.dart'
     as _i543;
+import 'package:shop_me/features/products/data/data_source/remote/product_api.dart'
+    as _i814;
+import 'package:shop_me/features/products/data/repositories/product_repository.dart'
+    as _i412;
+import 'package:shop_me/features/products/domain/usecases/product_usecase.dart'
+    as _i99;
+import 'package:shop_me/features/products/presentation/bloc/product_bloc.dart'
+    as _i907;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -42,11 +50,21 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i917.ArticlesRepository>(
       () => _i917.ArticlesRepositoryImpl(gh<_i549.ArticlesApi>()),
     );
+    gh.factory<_i814.ProductApi>(() => _i814.ProductApi(gh<_i732.ApiClient>()));
     gh.factory<_i167.ArticlesUseCase>(
       () => _i167.ArticlesUseCase(gh<_i917.ArticlesRepository>()),
     );
     gh.factory<_i543.ArticlesBloc>(
       () => _i543.ArticlesBloc(gh<_i167.ArticlesUseCase>()),
+    );
+    gh.factory<_i412.ProductRepository>(
+      () => _i412.ProductRepositoryImp(gh<_i814.ProductApi>()),
+    );
+    gh.factory<_i99.ProductUsecase>(
+      () => _i99.ProductUsecase(gh<_i412.ProductRepository>()),
+    );
+    gh.factory<_i907.ProductBloc>(
+      () => _i907.ProductBloc(gh<_i99.ProductUsecase>()),
     );
     return this;
   }

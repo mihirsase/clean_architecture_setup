@@ -6,7 +6,7 @@ import 'package:shop_me/features/articles/data/repositories/articles_repository.
 import 'package:shop_me/features/articles/domain/entities/news_article_entity.dart';
 import 'package:shop_me/features/articles/domain/usecases/articles_use_case.dart';
 
-import '../../../helpers/mock_helpers.dart';
+import '../../../../helpers/mock_helpers.dart';
 import '../../data/fakes/fake_articles_response.dart';
 
 void main() {

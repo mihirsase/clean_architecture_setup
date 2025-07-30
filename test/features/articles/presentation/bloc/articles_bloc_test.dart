@@ -8,7 +8,7 @@ import 'package:shop_me/features/articles/presentation/bloc/articles/articles_bl
 import 'package:shop_me/features/articles/presentation/bloc/articles/articles_event.dart';
 import 'package:shop_me/features/articles/presentation/bloc/articles/articles_state.dart';
 
-import '../../../helpers/mock_helpers.dart';
+import '../../../../helpers/mock_helpers.dart';
 import '../../data/fakes/fake_articles_response.dart';
 
 void main() {

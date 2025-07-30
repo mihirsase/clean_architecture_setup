@@ -8,7 +8,7 @@ import 'package:shop_me/core/usecase/failures.dart';
 import 'package:shop_me/features/articles/data/models/news_article_model.dart';
 import 'package:shop_me/features/articles/data/repositories/articles_repository.dart';
 
-import '../../../helpers/mock_helpers.dart';
+import '../../../../helpers/mock_helpers.dart';
 import '../fakes/fake_articles_response.dart';
 
 void main() {
