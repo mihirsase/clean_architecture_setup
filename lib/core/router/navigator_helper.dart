@@ -25,5 +25,10 @@ class NavigatorHelper {
     return replace(context, const ArticlesRoute());
   }
 
-
+  Future goToProductDetailsPage(
+    BuildContext context, {
+    required int productId,
+  }) async {
+    return push(context, ProductDetailsRoute(productId: productId));
+  }
 }

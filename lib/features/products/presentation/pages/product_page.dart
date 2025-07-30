@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_me/core/di/injection.dart';
+import 'package:shop_me/core/router/navigator_helper.dart';
 import 'package:shop_me/core/theme/app_colors.dart';
 import 'package:shop_me/core/theme/app_text_style.dart';
 import 'package:shop_me/features/products/domain/entities/product_entity.dart';
@@ -33,7 +34,9 @@ class _ProductPageState extends State<ProductPage> {
                 case ProductsLoaded():
                   return buildList(state.products);
                 case ProductsFailure():
-                  return Center(child: Text(state.message, style: AppTextStyles.body.large));
+                  return Center(
+                    child: Text(state.message, style: AppTextStyles.body.large),
+                  );
               }
             },
           ),
@@ -54,6 +57,12 @@ class _ProductPageState extends State<ProductPage> {
               color: AppColors.text.secondary,
             ),
           ),
+          onTap: () {
+            getIt<NavigatorHelper>().goToProductDetailsPage(
+              context,
+              productId: products[index].id,
+            );
+          },
         );
       },
     );
