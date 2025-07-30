@@ -24,6 +24,8 @@ import 'package:shop_me/features/articles/domain/usecases/articles_use_case.dart
     as _i167;
 import 'package:shop_me/features/articles/presentation/bloc/articles/articles_bloc.dart'
     as _i543;
+import 'package:shop_me/features/cart/presentation/bloc/cart_bloc.dart'
+    as _i133;
 import 'package:shop_me/features/product_details/data/data_source/remote/product_detail_api.dart'
     as _i1031;
 import 'package:shop_me/features/product_details/data/repositories/product_details_repository.dart'
@@ -49,6 +51,7 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final registerModule = _$RegisterModule();
+    gh.factory<_i133.CartBloc>(() => _i133.CartBloc());
     gh.singleton<_i669.NavigatorHelper>(() => _i669.NavigatorHelper());
     gh.lazySingleton<_i361.Dio>(() => registerModule.dio);
     gh.factory<_i732.ApiClient>(() => _i1041.DioClient(gh<_i361.Dio>()));

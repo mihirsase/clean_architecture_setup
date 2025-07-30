@@ -5,6 +5,8 @@ import 'package:shop_me/core/di/injection.dart';
 import 'package:shop_me/core/theme/app_colors.dart';
 import 'package:shop_me/core/theme/app_spacing.dart';
 import 'package:shop_me/core/theme/app_text_style.dart';
+import 'package:shop_me/features/cart/presentation/bloc/cart_bloc.dart';
+import 'package:shop_me/features/cart/presentation/bloc/cart_event.dart';
 import 'package:shop_me/features/product_details/domain/entities/product_details_entity.dart';
 import 'package:shop_me/features/product_details/presentation/bloc/product_detail_bloc.dart';
 import 'package:shop_me/features/product_details/presentation/bloc/product_detail_event.dart';
@@ -70,6 +72,20 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             product.description,
             style: AppTextStyles.body.small.copyWith(),
           ),
+        ),
+        AppSpacing.lg.hGap,
+        ElevatedButton(
+          onPressed: () {
+            context.read<CartBloc>().add(AddToCart(product));
+          },
+          child: Text('Add to Cart'),
+        ),
+
+        ElevatedButton(
+          onPressed: () {
+            context.read<CartBloc>().add(RemoveFromCart(product));
+          },
+          child: Text('Remove from Cart'),
         ),
       ],
     );

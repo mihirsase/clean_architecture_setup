@@ -31,4 +31,8 @@ class NavigatorHelper {
   }) async {
     return push(context, ProductDetailsRoute(productId: productId));
   }
+
+  Future goToCartPage(BuildContext context) async {
+    return push(context, CartRoute());
+  }
 }

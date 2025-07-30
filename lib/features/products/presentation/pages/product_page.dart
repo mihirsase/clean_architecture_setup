@@ -26,6 +26,23 @@ class _ProductPageState extends State<ProductPage> {
       child: SafeArea(
         child: Scaffold(
           backgroundColor: AppColors.surface.primary,
+          appBar: AppBar(
+            backgroundColor: AppColors.surface.primary,
+            title: Text(
+              'Shop Me'.toUpperCase(),
+              style: AppTextStyles.label.large,
+            ),
+            titleSpacing: 0,
+            iconTheme: IconThemeData(color: AppColors.icon.active),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  getIt<NavigatorHelper>().goToCartPage(context);
+                },
+                icon: Icon(Icons.shop),
+              ),
+            ],
+          ),
           body: BlocBuilder<ProductBloc, ProductState>(
             builder: (context, state) {
               switch (state) {

@@ -1,6 +1,7 @@
+import 'package:equatable/equatable.dart';
 import 'package:shop_me/features/product_details/data/models/product_details_model.dart';
 
-class ProductDetailsEntity {
+class ProductDetailsEntity extends Equatable {
   final int id;
   final String title;
   final String description;
@@ -14,7 +15,7 @@ class ProductDetailsEntity {
   final List<String> images;
   final String thumbnail;
 
-  ProductDetailsEntity({
+  const ProductDetailsEntity({
     required this.id,
     required this.title,
     required this.description,
@@ -47,4 +48,7 @@ class ProductDetailsEntity {
       thumbnail: model.thumbnail,
     );
   }
+
+  @override
+  List<Object?> get props => [id];
 }
