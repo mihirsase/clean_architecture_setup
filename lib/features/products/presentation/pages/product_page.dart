@@ -4,7 +4,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shop_me/core/di/injection.dart';
 import 'package:shop_me/core/router/navigator_helper.dart';
 import 'package:shop_me/core/theme/app_colors.dart';
+import 'package:shop_me/core/theme/app_spacing.dart';
 import 'package:shop_me/core/theme/app_text_style.dart';
+import 'package:shop_me/features/cart/presentation/bloc/cart_bloc.dart';
+import 'package:shop_me/features/cart/presentation/bloc/cart_state.dart';
 import 'package:shop_me/features/products/domain/entities/product_entity.dart';
 import 'package:shop_me/features/products/presentation/bloc/product_bloc.dart';
 import 'package:shop_me/features/products/presentation/bloc/product_event.dart';
@@ -35,11 +38,44 @@ class _ProductPageState extends State<ProductPage> {
             titleSpacing: 0,
             iconTheme: IconThemeData(color: AppColors.icon.active),
             actions: [
-              IconButton(
-                onPressed: () {
-                  getIt<NavigatorHelper>().goToCartPage(context);
+              BlocBuilder<CartBloc, CartState>(
+                builder: (context, state) {
+                  switch (state) {
+                    case CartStateLoaded():
+                      return Stack(
+                        children: [
+                          IconButton(
+                            onPressed: () {
+                              getIt<NavigatorHelper>().goToCartPage(context);
+                            },
+                            icon: Icon(Icons.shop),
+                          ),
+                          Positioned(
+                            top: 4,
+                            right: 4,
+                            child: SizedBox(
+                              height: AppSpacing.xl2,
+                              width: AppSpacing.xl2,
+                              child: DecoratedBox(
+                                decoration: BoxDecoration(
+                                  color: AppColors.text.negativeRed,
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(top: 1),
+                                  child: Center(
+                                    child: Text(
+                                      '${state.cartItems.length}',
+                                      style: AppTextStyles.label.small,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      );
+                  }
                 },
-                icon: Icon(Icons.shop),
               ),
             ],
           ),

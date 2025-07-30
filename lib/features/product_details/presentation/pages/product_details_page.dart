@@ -7,6 +7,7 @@ import 'package:shop_me/core/theme/app_spacing.dart';
 import 'package:shop_me/core/theme/app_text_style.dart';
 import 'package:shop_me/features/cart/presentation/bloc/cart_bloc.dart';
 import 'package:shop_me/features/cart/presentation/bloc/cart_event.dart';
+import 'package:shop_me/features/cart/presentation/bloc/cart_state.dart';
 import 'package:shop_me/features/product_details/domain/entities/product_details_entity.dart';
 import 'package:shop_me/features/product_details/presentation/bloc/product_detail_bloc.dart';
 import 'package:shop_me/features/product_details/presentation/bloc/product_detail_event.dart';
@@ -65,7 +66,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
     return Column(
       children: [
         Image.network(product.images.first),
-        AppSpacing.lg.hGap,
+        AppSpacing.lg.vGap,
         ListTile(
           title: Text(product.title, style: AppTextStyles.body.medium),
           subtitle: Text(
@@ -73,21 +74,58 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             style: AppTextStyles.body.small.copyWith(),
           ),
         ),
-        AppSpacing.lg.hGap,
-        ElevatedButton(
-          onPressed: () {
-            context.read<CartBloc>().add(AddToCart(product));
-          },
-          child: Text('Add to Cart'),
-        ),
-
-        ElevatedButton(
-          onPressed: () {
-            context.read<CartBloc>().add(RemoveFromCart(product));
-          },
-          child: Text('Remove from Cart'),
-        ),
+        AppSpacing.lg.vGap,
+        getAddToCartButton(product),
       ],
+    );
+  }
+
+  Widget getAddToCartButton(final ProductDetailsEntity product) {
+    return BlocBuilder<CartBloc, CartState>(
+      builder: (context, state) {
+        switch (state) {
+          case CartStateLoaded():
+            if (state.cartItems.containsKey(product)) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  FloatingActionButton(
+                    heroTag: null,
+                    onPressed: () {
+                      context.read<CartBloc>().add(RemoveFromCart(product));
+                    },
+                    mini: true,
+                    child: Icon(Icons.remove),
+                  ),
+                  AppSpacing.lg.hGap,
+                  Text(
+                    '${state.cartItems[product]}',
+                    style: AppTextStyles.label.large,
+                  ),
+                  AppSpacing.lg.hGap,
+                  FloatingActionButton(
+                    heroTag: null,
+                    onPressed: () {
+                      context.read<CartBloc>().add(AddToCart(product));
+                    },
+                    mini: true,
+                    child: Icon(Icons.add),
+                  ),
+                ],
+              );
+            } else {
+              return Align(
+                alignment: Alignment.centerRight,
+                child: ElevatedButton(
+                  onPressed: () {
+                    context.read<CartBloc>().add(AddToCart(product));
+                  },
+                  child: Text('Add to Cart'),
+                ),
+              );
+            }
+        }
+      },
     );
   }
 }

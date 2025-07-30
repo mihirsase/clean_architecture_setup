@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
       create: (context) => getIt<CartBloc>(),
       child: MaterialApp.router(
         title: 'Shop Me',
+        debugShowCheckedModeBanner: false,
         routerConfig: appRouter.config(),
       ),
     );
