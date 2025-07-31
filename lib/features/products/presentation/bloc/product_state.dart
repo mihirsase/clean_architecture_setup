@@ -1,17 +1,11 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shop_me/features/products/domain/entities/product_entity.dart';
+part 'product_state.freezed.dart';
 
-sealed class ProductState {}
-
-class ProductsLoading extends ProductState {}
-
-class ProductsLoaded extends ProductState {
-  final List<ProductEntity> products;
-
-  ProductsLoaded(this.products);
-}
-
-class ProductsFailure extends ProductState {
-  final String message;
-
-  ProductsFailure(this.message);
+@freezed
+sealed class ProductState with _$ProductState {
+  factory ProductState.loading() = ProductsLoading;
+  factory ProductState.loaded(final List<ProductEntity> products) =
+      ProductsLoaded;
+  factory ProductState.failure(final String message) = ProductsFailure;
 }

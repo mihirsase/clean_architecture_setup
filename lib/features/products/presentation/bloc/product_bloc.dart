@@ -9,7 +9,7 @@ import 'package:shop_me/features/products/presentation/bloc/product_state.dart';
 @Injectable()
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final ProductUsecase productUsecase;
-  ProductBloc(this.productUsecase) : super(ProductsLoading()) {
+  ProductBloc(this.productUsecase) : super(ProductState.loading()) {
     on<LoadProducts>(_loadProducts);
   }
 
@@ -20,10 +20,10 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     final either = await productUsecase.call();
     either.when(
       error: (failure) {
-        emit(ProductsFailure(failure.message));
+        emit(ProductState.failure(failure.message));
       },
       success: (products) {
-        emit(ProductsLoaded(products));
+        emit(ProductState.loaded(products));
       },
     );
   }
