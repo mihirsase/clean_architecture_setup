@@ -8,7 +8,7 @@ import 'package:shop_me/features/product_details/domain/entities/product_details
 
 @Injectable()
 class CartBloc extends Bloc<CartEvent, CartState> {
-  CartBloc() : super(CartStateLoaded({})) {
+  CartBloc() : super(CartState.loaded({})) {
     on<AddToCart>(_addToCart);
     on<RemoveFromCart>(_removeFromCart);
     on<ClearCart>(_clearCart);
@@ -26,7 +26,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         currentCart[event.product] = 1;
       }
 
-      emit(CartStateLoaded(currentCart));
+      emit(state.copyWith(cartItems: currentCart));
     }
   }
 
@@ -44,12 +44,12 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         if (currentCart[event.product]! == 0) {
           currentCart.remove(event.product);
         }
-        emit(CartStateLoaded(currentCart));
+        emit(state.copyWith(cartItems: currentCart));
       }
     }
   }
 
   FutureOr<void> _clearCart(ClearCart event, Emitter<CartState> emit) {
-    emit(CartStateLoaded({}));
+    emit(state.copyWith(cartItems: {}));
   }
 }

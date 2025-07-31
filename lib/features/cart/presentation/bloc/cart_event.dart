@@ -1,18 +1,12 @@
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shop_me/features/product_details/domain/entities/product_details_entity.dart';
 
-sealed class CartEvent {}
+part 'cart_event.freezed.dart';
 
-class AddToCart extends CartEvent {
-  final ProductDetailsEntity product;
-
-  AddToCart(this.product);
-}
-
-class RemoveFromCart extends CartEvent {
-  final ProductDetailsEntity product;
-
-  RemoveFromCart(this.product);
-}
-
-class ClearCart extends CartEvent {
+@freezed
+sealed class CartEvent with _$CartEvent {
+  factory CartEvent.removeFromCart(final ProductDetailsEntity product) =
+      RemoveFromCart;
+  factory CartEvent.addToCart(final ProductDetailsEntity product) = AddToCart;
+  factory CartEvent.clearCart() = ClearCart;
 }
