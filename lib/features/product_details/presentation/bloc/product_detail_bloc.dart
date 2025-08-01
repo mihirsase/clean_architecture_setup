@@ -20,13 +20,9 @@ class ProductDetailBloc extends Bloc<ProductDetailEvent, ProductDetailsState> {
     Emitter<ProductDetailsState> emit,
   ) async {
     final either = await productDetailsUsecase.call(event.productId);
-    either.when(
-      error: (failure) {
-        emit(ProducDetailsFailure(failure.message));
-      },
-      success: (details) {
-        emit(PrductDetailsLoaded(details));
-      },
+    either.fold(
+      (failure) => emit(ProducDetailsFailure(failure.message)),
+      (details) => emit(PrductDetailsLoaded(details)),
     );
   }
 }

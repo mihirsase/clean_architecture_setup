@@ -1,9 +1,9 @@
 import 'dart:convert';
 
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shop_me/core/network/api_response.dart';
-import 'package:shop_me/core/usecase/either.dart';
 import 'package:shop_me/core/usecase/failures.dart';
 import 'package:shop_me/features/articles/data/models/news_article_model.dart';
 import 'package:shop_me/features/articles/data/repositories/articles_repository.dart';

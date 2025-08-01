@@ -1,4 +1,4 @@
-import 'package:shop_me/core/usecase/either.dart';
+import 'package:dartz/dartz.dart';
 import 'package:shop_me/core/usecase/failures.dart';
 
 abstract class UseCase<Type, Params> {

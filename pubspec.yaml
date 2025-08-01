@@ -23,6 +23,7 @@ dependencies:
   json_serializable: ^6.9.5
   json_annotation: ^4.9.0
   freezed_annotation: ^3.0.0
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:

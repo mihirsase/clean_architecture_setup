@@ -1,7 +1,7 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-import 'package:shop_me/core/usecase/either.dart';
 import 'package:shop_me/core/usecase/failures.dart';
 import 'package:shop_me/features/articles/domain/usecases/articles_use_case.dart';
 import 'package:shop_me/features/articles/presentation/bloc/articles/articles_bloc.dart';

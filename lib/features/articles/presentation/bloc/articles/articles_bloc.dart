@@ -16,13 +16,9 @@ class ArticlesBloc extends Bloc<ArticlesEvent, ArticlesState> {
     Emitter<ArticlesState> emit,
   ) async {
     final either = await articlesUseCase.call();
-    either.when(
-      error: (failure) {
-        emit(ArticlesError(failure));
-      },
-      success: (articles) {
-        emit(ArticlesLoaded(articles));
-      },
+    either.fold(
+      (failure) => emit(ArticlesError(failure)),
+      (articles) => emit(ArticlesLoaded(articles)),
     );
   }
 }
